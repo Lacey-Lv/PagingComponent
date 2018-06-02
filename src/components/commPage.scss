@@ -57,6 +57,11 @@
                 border: none;
                 color: #fff;
             }
+            li:hover {
+                box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+                color: black;
+                font-weight: 600;
+            }
         }
         .comm_span {
             display: flex;
@@ -72,6 +77,11 @@
             margin-right: 2.5px;
             border-radius: 2px; 
             cursor: pointer;
+        }
+        span:hover {
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            color: black;
+            font-weight: 600;
         }
     }
 }

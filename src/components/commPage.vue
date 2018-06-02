@@ -74,7 +74,6 @@ export default {
             currSize: 0,
             currPage: 1,
             currShowPage: [],
-            lastPage: 0,
             inputPage: 0,
             allCount: 0,
             isShow: true
@@ -139,14 +138,76 @@ export default {
         /** 上一页 */
         prePage() {
             if (this.currPage !== 1) {
-                this.currPage--;
+                let index = this.currShowPage.indexOf(this.currPage);
+                if (this.currShowPage[index - 1] !== '...') {
+                    this.currPage--;
+                } else {
+                    if (this.currPage === this.allCount) {
+                        this.currShowPage = [];
+                        this.currShowPage.push(1);
+                        this.currShowPage.push('...');
+                        for (let i = this.currPage - this.blockNum; i < this.allCount; i++) {
+                            this.currShowPage.push(i);
+                        }
+                        this.currShowPage.push(this.allCount);
+                    } else if (this.currPage - this.blockNum <= 1){
+                        this.currShowPage = [];
+                        this.currShowPage.push(1);
+                        for (let i = 1; i < this.blockNum; i++) {
+                            this.currShowPage.push(i + 1);
+                        }
+                        this.currShowPage.push('...');
+                        this.currShowPage.push(this.allCount);
+                    } else {
+                        this.currShowPage = [];
+                        this.currShowPage.push(1);
+                        this.currShowPage.push('...');
+                        for (let i = this.currPage - this.blockNum; i <= this.currPage - 1; i++) {
+                            this.currShowPage.push(i);
+                        }
+                        this.currShowPage.push('...');
+                        this.currShowPage.push(this.allCount);
+                    }
+                    this.currPage--;
+                }
             }
             this.$emit('handleCurrentChange', this.currPage);
         },
         /** 下一页 */
         afterPage() {
-            if (this.currPage !== this.lastPage) {
-                this.currPage++;
+            let index = this.currShowPage.indexOf(this.currPage);
+            if (this.currPage !== this.allCount) {
+                if (this.currShowPage[index + 1] !== '...') {
+                    this.currPage++;
+                } else {
+                    if (index === 0) {
+                        this.currShowPage = [];
+                        this.currShowPage.push(1);
+                        for (let i = 1; i <= this.blockNum; i++) {
+                            this.currShowPage.push(i + 1);
+                        }
+                        this.currShowPage.push('...');
+                        this.currShowPage.push(this.allCount);
+                    } else if (this.allCount - this.currPage >= this.blockNum){
+                        this.currShowPage = [];
+                        this.currShowPage.push(1);
+                        this.currShowPage.push('...');
+                        for (let i = this.currPage - this.blockNum + 2; i <= this.currPage + 1; i++) {
+                            this.currShowPage.push(i);
+                        }
+                        this.currShowPage.push('...');
+                        this.currShowPage.push(this.allCount);
+                    } else {
+                        this.currShowPage = [];
+                        this.currShowPage.push(1);
+                        this.currShowPage.push('...');
+                        for (let i = this.allCount - this.blockNum; i <= this.allCount - 1; i++) {
+                            this.currShowPage.push(i);
+                        }
+                        this.currShowPage.push(this.allCount);
+                    }
+                    this.currPage++;
+                }
             }
             this.$emit('handleCurrentChange', this.currPage);
         },
@@ -186,7 +247,6 @@ export default {
                 this.currShowPage.push('...');
                 this.currShowPage.push(this.allCount);
             }
-            this.lastPage = this.allCount;
         }
     },
     mounted() {
