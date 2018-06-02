@@ -1,0 +1,54 @@
+.test-paging {
+    width: 1200px;
+    height: 50px;   
+    margin-left: 100px;
+    margin-top: 100px;
+    input {
+        width: 60px;
+        height: 28px;
+        padding-left: 5px;
+        border: 1px solid #dcdfe6;
+        border-radius: 3px;
+        outline: none;
+    }
+    i {        
+        font-size: 14px;
+        color: #323232;
+        background-color: #edf3f6;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;   
+        border: 1px solid #dcdfe6;    
+        margin-left: -2px; 
+        cursor: pointer;
+    }
+    .input-info {
+        margin-bottom: 50px;  
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        input {
+            margin-right: 50px;
+        }     
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important
+        }
+        span {
+            display: inline-flex;
+            align-content: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        i {
+            margin-left: -50px;
+            font-size: 12px;
+            color: red;
+            width: 200px;
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
