@@ -10,7 +10,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "sass-loader": "^6.0.7",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
