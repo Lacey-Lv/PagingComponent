@@ -22,5 +22,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 # run result 执行效果
 
-![执行结果展示图片](./res.png)
+![执行结果展示图片](./img/res.png)
 
