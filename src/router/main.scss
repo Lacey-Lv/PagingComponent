@@ -31,7 +31,10 @@
         align-items: center;
         input {
             margin-right: 50px;
-        }     
+        } 
+        input:nth-of-type(1){
+            min-width: 80px;
+        }    
         input::-webkit-inner-spin-button {
             -webkit-appearance: none !important
         }

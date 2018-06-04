@@ -28,7 +28,6 @@ export default {
     props: {
         /** 总条数,若显示总条数的话，必传 */
         total: {
-            type: Number,
             default() {
                 return 0;
             }
